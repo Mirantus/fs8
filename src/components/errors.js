@@ -7,10 +7,10 @@ export default props => {
 
         return (
             <div key={key}>
-                <i className="material-icons" style={{verticalAlign: 'bottom', marginRight: '5px'}}>error_outline</i>
+                <i className="material-icons" style={{ verticalAlign: 'bottom', marginRight: '5px' }}>error_outline</i>
                 <b>Ошибка: {message}</b>
             </div>
-        )
+        );
     }
 
     return (

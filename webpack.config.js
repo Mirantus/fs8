@@ -16,6 +16,11 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: path.resolve(__dirname, './src')
+            },
+            {
+                test: /\.js$/,
+                loader: 'eslint-loader',
+                include: path.resolve(__dirname, './src')
             }
         ]
     },
