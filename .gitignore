@@ -1,0 +1,5 @@
+/build
+/node_modules
+/.idea
+/.env.production.js
+/.env.dev.js
