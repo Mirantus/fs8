@@ -1,11 +1,16 @@
+// @flow
+
 import * as types from 'constants/actions/catalog/categories';
 
+import type { Dispatch } from 'redux';
+
 export const fetchCategories = () => {
-    return dispatch => {
+    return (dispatch:Dispatch<Object>) => {
         dispatch({
             type: types.FETCH_CATEGORIES
         });
 
+        // $FlowFixMe
         fetch(`${APP_ENV.apiUrl}/catalog/categories`)
             .then(response => response.json())
             .then(response => {
@@ -14,10 +19,10 @@ export const fetchCategories = () => {
                     payload: response
                 });
             })
-            .catch(error => {
+            .catch(() => {
                 dispatch({
                     type: types.FETCH_CATEGORIES_FAILURE,
-                    payload: error
+                    payload: { message: 'Невозможно получить данные' }
                 });
             });
     };

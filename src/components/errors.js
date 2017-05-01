@@ -1,7 +1,15 @@
+// @flow
+
 import React from 'react';
 import { CardPanel } from 'react-materialize';
 
-export default props => {
+import type { StateType as ErrorsType } from 'reducers/catalog/categories/errors';
+
+type Props = {
+    errors: ErrorsType
+}
+
+export default (props:Props) => {
     function renderError(error, key) {
         const message = error.message || 'нет данных';
 

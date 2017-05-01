@@ -1,7 +1,15 @@
+// @flow
+
 import React from 'react';
 import { Collection, CollectionItem } from 'react-materialize';
 
-export default props => {
+import type { StateType as CategoriesType } from 'reducers/catalog/categories/data';
+
+type Props = {
+    categories: CategoriesType
+}
+
+export default (props:Props) => {
     return (
         <Collection>
             {

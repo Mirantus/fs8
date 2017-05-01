@@ -1,3 +1,5 @@
+// @flow
+
 import { combineReducers } from 'redux';
 
 import categories from './catalog/categories';
