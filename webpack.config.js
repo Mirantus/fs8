@@ -21,6 +21,11 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'eslint-loader',
                 include: path.resolve(__dirname, './src')
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader?modules&camelCase=only',
+                include: path.resolve(__dirname, './src')
             }
         ]
     },
