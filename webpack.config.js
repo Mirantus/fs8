@@ -1,10 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const context = path.resolve(__dirname, 'src');
 
 const isProduction = process.argv.indexOf('-p') !== -1;
 const APP_ENV = isProduction ? require('./.env.production') : require('./.env.dev');
 
 module.exports = {
+    context,
     entry: path.resolve(__dirname, './src'),
     output: {
         path: path.resolve(__dirname, './www/build'),
@@ -15,6 +17,17 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                query: {
+                    plugins: [
+                        'transform-react-jsx',
+                        [
+                            'react-css-modules',
+                            {
+                                context
+                            }
+                        ]
+                    ]
+                },
                 include: path.resolve(__dirname, './src')
             },
             {
@@ -23,10 +36,13 @@ module.exports = {
                 include: path.resolve(__dirname, './src')
             },
             {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader?modules&camelCase=only',
-                include: path.resolve(__dirname, './src')
-            }
+                include: path.resolve(__dirname, './src'),
+                loaders: [
+                    'style-loader',
+                    'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+                ],
+                test: /\.css$/
+            },
         ]
     },
     resolve: {
