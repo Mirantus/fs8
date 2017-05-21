@@ -1,0 +1,18 @@
+.icon {
+    display: inline-block;
+    width: 16px; height: 16px;
+    margin-right: 5px;
+    background: transparent url('/i/icons/icons-16.png') no-repeat;
+    vertical-align: middle;
+}
+.facebook{ background-position: 0 0;  }
+.flamp{ background-position: 0 -17px;  }
+.icq{ background-position: 0 -34px;  }
+.livejournal{ background-position: 0 -51px;  }
+.odnoklassniki{ background-position: 0 -68px;  }
+.phone{ background-position: 0 -85px;  }
+.skype{ background-position: 0 -102px;  }
+.twitter{ background-position: 0 -119px;  }
+.vkontakte{ background-position: 0 -136px;  }
+.youtube{ background-position: 0 -153px;  }
+.url{ background-position: 0 -169px;  }

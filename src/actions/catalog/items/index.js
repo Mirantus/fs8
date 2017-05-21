@@ -27,3 +27,27 @@ export const fetchItems = (categoryId:number) => {
             });
     };
 };
+
+export const fetchItem = (id:number) => {
+    return (dispatch:Dispatch<Object>) => {
+        dispatch({
+            type: types.FETCH_ITEM
+        });
+
+        // $FlowFixMe
+        fetch(`${APP_ENV.apiUrl}/catalog/items/${id}`)
+            .then(response => response.json())
+            .then(response => {
+                dispatch({
+                    type: types.FETCH_ITEM_SUCCESS,
+                    payload: response
+                });
+            })
+            .catch(() => {
+                dispatch({
+                    type: types.FETCH_ITEM_FAILURE,
+                    payload: { message: 'Невозможно получить данные' }
+                });
+            });
+    };
+};

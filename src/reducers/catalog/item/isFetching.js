@@ -4,15 +4,16 @@ import * as types from 'constants/actions/catalog/items';
 
 import type { ActionType } from 'actions/catalog/items/types';
 
-export type StateType = Array<number>;
-const initialState = [];
+export type StateType = boolean;
+const initialState = false;
 
 export default (state:StateType = initialState, action:ActionType):StateType => {
     switch (action.type) {
-        case types.FETCH_ITEMS:
+        case types.FETCH_ITEM:
+            return true;
+        case types.FETCH_ITEM_SUCCESS:
+        case types.FETCH_ITEM_FAILURE:
             return initialState;
-        case types.FETCH_ITEMS_SUCCESS:
-            return action.payload.items.map(item => item.id);
         default:
             return state;
     }
