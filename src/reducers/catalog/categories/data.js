@@ -10,6 +10,8 @@ const initialState = [];
 
 export default (state:StateType = initialState, action:ActionType):StateType => {
     switch (action.type) {
+        case types.FETCH_CATEGORIES:
+            return initialState;
         case types.FETCH_CATEGORIES_SUCCESS:
             return [...action.payload.categories];
         default:

@@ -1,0 +1,5 @@
+// @flow
+
+export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
+export const FETCH_ITEMS_FAILURE = 'FETCH_ITEMS_FAILURE';
