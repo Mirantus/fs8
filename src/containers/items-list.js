@@ -40,10 +40,10 @@ class ItemsListContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    const { data, errors, isFetching } = state.items;
+    const { data, list, errors, isFetching } = state.items;
 
     return {
-        items: data,
+        items: list.map(id => data[id]),
         errors,
         isFetching,
         isLoaded: !!data.length
