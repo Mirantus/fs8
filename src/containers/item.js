@@ -9,7 +9,24 @@ import { fetchItem } from 'actions/catalog/items';
 import Item from 'components/item';
 import Errors from 'components/errors/index';
 
+import type { CatalogItemType } from 'types/catalog/item';
+
+import type { StateType as ErrorsType } from 'reducers/catalog/item/errors';
+
+type Props = {
+    id: number,
+    item: CatalogItemType,
+    isFetching: boolean,
+    isLoaded: boolean,
+    errors: ErrorsType,
+    actions: {
+        fetchItem: Function
+    }
+};
+
 class ItemsListContainer extends Component {
+    props:Props;
+
     componentDidMount() {
         const { actions, id, isLoaded } = this.props;
 
