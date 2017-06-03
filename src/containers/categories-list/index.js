@@ -12,6 +12,8 @@ import Errors from 'components/errors/index';
 import type { StateType as CategoriesType } from 'reducers/catalog/categories/data';
 import type { StateType as ErrorsType } from 'reducers/catalog/categories/errors';
 
+import mapStateToProps from './selectors';
+
 type Props = {
     categories: CategoriesType,
     isLoaded: boolean,
@@ -47,17 +49,6 @@ class CategoriesListContainer extends Component {
         return <CategoriesList categories={categories} />;
     }
 }
-
-const mapStateToProps = (state, props) => {
-    const categories = state.categories.data;
-
-    return {
-        categories: categories.filter(category => (props.parentId ? category.cat === props.parentId : !category.cat)),
-        errors: state.categories.errors,
-        isFetching: state.categories.isFetching,
-        isLoaded: !!categories.length
-    };
-};
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({ fetchCategories }, dispatch)

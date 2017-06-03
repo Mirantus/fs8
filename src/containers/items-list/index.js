@@ -12,6 +12,8 @@ import Errors from 'components/errors/index';
 import type { CatalogItemType } from 'types/catalog/item';
 import type { StateType as ErrorsType } from 'reducers/catalog/items/errors';
 
+import mapStateToProps from './selectors';
+
 type Props = {
     categoryId: number,
     items: Array<CatalogItemType>,
@@ -54,17 +56,6 @@ class ItemsListContainer extends Component {
         return <ItemsList items={items} />;
     }
 }
-
-const mapStateToProps = state => {
-    const { data, list, errors, isFetching } = state.items;
-
-    return {
-        items: list.map(id => data[id]),
-        errors,
-        isFetching,
-        isLoaded: !!data.length
-    };
-};
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({ fetchItems }, dispatch)
