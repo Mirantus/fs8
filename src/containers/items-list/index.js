@@ -1,8 +1,10 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import compose from 'recompose/compose';
+import lifecycle from 'recompose/lifecycle';
 import { ProgressBar } from 'react-materialize';
 
 import { fetchItems } from 'actions/catalog/items/index';
@@ -25,40 +27,38 @@ type Props = {
     }
 };
 
-class ItemsListContainer extends Component {
-    props:Props;
-
-    componentDidMount() {
-        const { actions, categoryId } = this.props;
-
-        actions.fetchItems(categoryId);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        const { actions, categoryId } = this.props;
-
-        if (categoryId !== nextProps.categoryId) {
-            actions.fetchItems(nextProps.categoryId);
-        }
-    }
-
-    render() {
-        const { items, errors, isFetching } = this.props;
-
-        if (isFetching) {
-            return <ProgressBar />;
-        }
-
-        if (errors.length) {
-            return <Errors errors={errors} />;
-        }
-
-        return <ItemsList items={items} />;
-    }
-}
-
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({ fetchItems }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsListContainer);
+const ItemsListContainer = (props:Props) => {
+    const { items, errors, isFetching } = props;
+
+    if (isFetching) {
+        return <ProgressBar />;
+    }
+
+    if (errors.length) {
+        return <Errors errors={errors} />;
+    }
+
+    return <ItemsList items={items} />;
+};
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    lifecycle({
+        componentDidMount() {
+            const { actions, categoryId } = this.props;
+
+            actions.fetchItems(categoryId);
+        },
+        componentWillReceiveProps(nextProps) {
+            const { actions, categoryId } = this.props;
+
+            if (categoryId !== nextProps.categoryId) {
+                actions.fetchItems(nextProps.categoryId);
+            }
+        }
+    })
+)(ItemsListContainer);

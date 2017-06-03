@@ -1,8 +1,10 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import compose from 'recompose/compose';
+import lifecycle from 'recompose/lifecycle';
 import { ProgressBar } from 'react-materialize';
 
 import { fetchItem } from 'actions/catalog/items';
@@ -24,36 +26,6 @@ type Props = {
     }
 };
 
-class ItemsListContainer extends Component {
-    props:Props;
-
-    componentDidMount() {
-        const { actions, id, isLoaded } = this.props;
-
-        if (!isLoaded) {
-            actions.fetchItem(id);
-        }
-    }
-
-    render() {
-        const { item, errors, isFetching, isLoaded } = this.props;
-
-        if (isFetching) {
-            return <ProgressBar />;
-        }
-
-        if (errors.length) {
-            return <Errors errors={errors} />;
-        }
-
-        if (!isLoaded) {
-            return <ProgressBar />;
-        }
-
-        return <Item item={item} />;
-    }
-}
-
 const mapStateToProps = (state, props) => {
     const { errors, isFetching } = state.item;
     const item = state.items.data[props.id];
@@ -70,4 +42,33 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({ fetchItem }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsListContainer);
+const ItemContainer = (props:Props) => {
+    const { item, errors, isFetching, isLoaded } = props;
+
+    if (isFetching) {
+        return <ProgressBar />;
+    }
+
+    if (errors.length) {
+        return <Errors errors={errors} />;
+    }
+
+    if (!isLoaded) {
+        return <ProgressBar />;
+    }
+
+    return <Item item={item} />;
+};
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    lifecycle({
+        componentDidMount() {
+            const { actions, id, isLoaded } = this.props;
+
+            if (!isLoaded) {
+                actions.fetchItem(id);
+            }
+        }
+    })
+)(ItemContainer);

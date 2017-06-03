@@ -1,8 +1,10 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import compose from 'recompose/compose';
+import lifecycle from 'recompose/lifecycle';
 import { ProgressBar } from 'react-materialize';
 
 import { fetchCategories } from 'actions/catalog/categories';
@@ -24,34 +26,33 @@ type Props = {
     }
 };
 
-class CategoriesListContainer extends Component {
-    props:Props;
+const CategoriesListContainer = (props:Props) => {
+    const { categories, errors, isFetching } = props;
 
-    componentDidMount() {
-        const { actions, isLoaded } = this.props;
-
-        if (!isLoaded) {
-            actions.fetchCategories();
-        }
+    if (isFetching) {
+        return <ProgressBar />;
     }
 
-    render() {
-        const { categories, errors, isFetching } = this.props;
-
-        if (isFetching) {
-            return <ProgressBar />;
-        }
-
-        if (errors.length) {
-            return <Errors errors={errors} />;
-        }
-
-        return <CategoriesList categories={categories} />;
+    if (errors.length) {
+        return <Errors errors={errors} />;
     }
-}
+
+    return <CategoriesList categories={categories} />;
+};
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({ fetchCategories }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesListContainer);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    lifecycle({
+        componentDidMount() {
+            const { actions, isLoaded } = this.props;
+
+            if (!isLoaded) {
+                actions.fetchCategories();
+            }
+        }
+    })
+)(CategoriesListContainer);
