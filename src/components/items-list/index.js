@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import pure from 'recompose/pure';
 
 import ItemCard from 'components/item-card/';
 
@@ -17,6 +18,8 @@ const renderItem = item => (
     </Link>
 );
 
-export default (props:Props) => {
+const ItemsList = (props:Props) => {
     return <div>{props.items.map(item => renderItem(item))}</div>;
 };
+
+export default pure(ItemsList);

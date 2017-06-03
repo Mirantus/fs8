@@ -3,6 +3,7 @@
 import React from 'react';
 import { Collection } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import pure from 'recompose/pure';
 
 import type { StateType as CategoriesType } from 'reducers/catalog/categories/data';
 
@@ -10,7 +11,7 @@ type Props = {
     categories: CategoriesType
 }
 
-export default (props:Props) => {
+const CategoriesList = (props:Props) => {
     return (
         <Collection>
             {
@@ -25,3 +26,6 @@ export default (props:Props) => {
         </Collection>
     );
 };
+
+export default pure(CategoriesList);
+
