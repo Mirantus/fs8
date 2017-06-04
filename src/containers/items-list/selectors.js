@@ -3,16 +3,18 @@ import { createSelector } from 'reselect';
 const mapStateToProps = createSelector(
     [
         state => state.items.data,
-        state => state.items.list,
+        (state, props) => state.categories.items[props.categoryId],
         state => state.items.errors,
         state => state.items.isFetching
     ],
     (data, list, errors, isFetching) => {
+        const isLoaded = !!list;
+
         return {
-            items: list.map(id => data[id]),
+            items: isLoaded ? list.map(id => data[id]) : [],
             errors,
             isFetching,
-            isLoaded: !!data.length
+            isLoaded
         };
     }
 );

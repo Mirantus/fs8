@@ -49,14 +49,16 @@ export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     lifecycle({
         componentDidMount() {
-            const { actions, categoryId } = this.props;
+            const { actions, categoryId, isLoaded } = this.props;
 
-            actions.fetchItems(categoryId);
+            if (!isLoaded) {
+                actions.fetchItems(categoryId);
+            }
         },
         componentWillReceiveProps(nextProps) {
             const { actions, categoryId } = this.props;
 
-            if (categoryId !== nextProps.categoryId) {
+            if (categoryId !== nextProps.categoryId && !nextProps.isLoaded) {
                 actions.fetchItems(nextProps.categoryId);
             }
         }

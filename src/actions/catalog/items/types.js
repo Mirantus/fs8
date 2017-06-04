@@ -15,7 +15,12 @@ export type FailureActionType = {
 export type SuccessActionType = {
     type: 'FETCH_ITEMS_SUCCESS',
     payload: {
-        items: Array<CatalogItemType>
+        items: Array<CatalogItemType>,
+        metadata: {
+            query: {
+                category: number
+            }
+        }
     }
 }
 
