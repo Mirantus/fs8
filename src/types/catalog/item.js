@@ -1,7 +1,7 @@
 
 // @flow
 
-export type CatalogItemType = {
+export type CatalogItemType = {|
     access: 0 | 1,
     cat: number,
     date: string,
@@ -21,4 +21,4 @@ export type CatalogItemType = {
     url: string,
     vkontakte: string,
     youtube: string
-}
+|}

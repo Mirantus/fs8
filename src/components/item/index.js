@@ -7,9 +7,9 @@ import ItemContacts from 'components/item-contacts';
 
 import type { CatalogItemType } from 'types/catalog/item';
 
-type Props = {
+type Props = {|
     item: CatalogItemType
-}
+|}
 
 export default (props:Props) => {
     const { item } = props;

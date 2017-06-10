@@ -7,9 +7,9 @@ import pure from 'recompose/pure';
 
 import type { StateType as CategoriesType } from 'reducers/catalog/categories/data';
 
-type Props = {
+type Props = {|
     categories: CategoriesType
-}
+|}
 
 const CategoriesList = (props:Props) => {
     return (

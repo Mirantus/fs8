@@ -16,7 +16,7 @@ import type { StateType as ErrorsType } from 'reducers/catalog/categories/errors
 
 import mapStateToProps from './selectors';
 
-type Props = {
+type Props = {|
     categories: CategoriesType,
     isLoaded: boolean,
     isFetching: boolean,
@@ -24,7 +24,7 @@ type Props = {
     actions: {
         fetchCategories: Function,
     }
-};
+|};
 
 const CategoriesListContainer = (props:Props) => {
     const { categories, errors, isFetching } = props;

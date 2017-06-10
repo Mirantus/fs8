@@ -6,9 +6,9 @@ import { CardPanel } from 'react-materialize';
 import type { StateType as ErrorsType } from 'reducers/catalog/categories/errors';
 import styles from './styles.css';
 
-type Props = {
+type Props = {|
     errors: ErrorsType
-}
+|}
 
 export default (props:Props) => {
     function renderError(error, key) {

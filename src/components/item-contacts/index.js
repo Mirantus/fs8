@@ -6,9 +6,9 @@ import type { CatalogItemType } from 'types/catalog/item';
 
 import styles from './styles.css';
 
-type Props = {
+type Props = {|
     item: CatalogItemType
-}
+|}
 
 const renderContact = (contact) => {
     const icon = <i className={`${styles.icon} ${styles[contact.key]}`} />;

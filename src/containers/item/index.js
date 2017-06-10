@@ -15,7 +15,7 @@ import type { CatalogItemType } from 'types/catalog/item';
 
 import type { StateType as ErrorsType } from 'reducers/catalog/item/errors';
 
-type Props = {
+type Props = {|
     id: number,
     item: CatalogItemType,
     isFetching: boolean,
@@ -24,7 +24,7 @@ type Props = {
     actions: {
         fetchItem: Function
     }
-};
+|};
 
 const mapStateToProps = (state, props) => {
     const { errors, isFetching } = state.item;

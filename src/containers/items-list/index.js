@@ -16,7 +16,7 @@ import type { StateType as ErrorsType } from 'reducers/catalog/items/errors';
 
 import mapStateToProps from './selectors';
 
-type Props = {
+type Props = {|
     categoryId: number,
     items: Array<CatalogItemType>,
     isFetching: boolean,
@@ -25,7 +25,7 @@ type Props = {
     actions: {
         fetchItems: Function
     }
-};
+|};
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({ fetchItems }, dispatch)

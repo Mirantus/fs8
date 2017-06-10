@@ -3,9 +3,9 @@
 import React from 'react';
 import styles from './styles.css';
 
-type Props = {
+type Props = {|
     id: number
-}
+|}
 
 export default (props:Props) => {
     return (
