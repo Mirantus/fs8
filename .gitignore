@@ -1,5 +1,6 @@
-/build
-/node_modules
 /.idea
-/.env.production.js
+/node_modules
+/www/build
+/www/data
 /.env.dev.js
+/.env.production.js

@@ -10,7 +10,7 @@ type Props = {|
 export default (props:Props) => {
     return (
         <div className={`card-image ${styles.image}`}>
-            <img alt="" src={`http://fs8.ru/catalog/data/items/${props.id}.png`} />
+            <img alt="" src={`/data/logo/${props.id}.png`} />
         </div>
     );
 };
