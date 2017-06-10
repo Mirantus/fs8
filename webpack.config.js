@@ -5,7 +5,10 @@ const isProduction = process.argv.indexOf('-p') !== -1;
 const APP_ENV = isProduction ? require('./.env.production') : require('./.env.dev');
 
 module.exports = {
-    entry: ['babel-polyfill', path.resolve(__dirname, './src')],
+    entry: [
+        'babel-polyfill',
+        path.resolve(__dirname, './src')
+    ],
     output: {
         path: path.resolve(__dirname, './www/build'),
         filename: 'bundle.js'
@@ -30,7 +33,10 @@ module.exports = {
         ]
     },
     resolve: {
-        modules: [path.resolve(__dirname, './src'), 'node_modules']
+        modules: [
+            path.resolve(__dirname, './src'),
+            'node_modules'
+        ]
     },
     plugins: [
         new webpack.DefinePlugin({
