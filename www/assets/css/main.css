@@ -168,3 +168,49 @@ small {
 .card-content {
     color: #757575;
 }
+
+/* === Form === */
+.form .label {
+    display: block;
+    margin: 20px 0 0 0;
+    color: #9E9E9E;
+    font-size: 1rem;
+}
+
+.form .input,
+.form .textarea,
+.form select
+{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.form .input,
+.form .textarea,
+.form select,
+.form option,
+.form optgroup
+{
+    color: rgba(0,0,0,0.87);
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.submit {
+    display: block;
+    margin: 20px 0;
+    color: #fff;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    font-size: 1rem;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+}

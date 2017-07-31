@@ -24,7 +24,23 @@ export type SuccessActionType = {|
     }
 |}
 
+export type AddActionType = {|
+    type: 'ADD_ITEM'
+|}
+
+export type AddFailureActionType = {|
+    type: 'ADD_ITEM_FAILURE',
+    payload: ErrorType
+|}
+
+export type AddSuccessActionType = {|
+    type: 'ADD_ITEM_SUCCESS'
+|}
+
 export type ActionType =
     | FetchActionType
     | FailureActionType
     | SuccessActionType
+    | AddActionType
+    | AddFailureActionType
+    | AddSuccessActionType
