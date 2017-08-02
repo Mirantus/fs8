@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import compose from 'recompose/compose';
 import lifecycle from 'recompose/lifecycle';
-import { ProgressBar } from 'react-materialize';
 
 import { fetchItem } from 'actions/catalog/items';
 import Item from 'components/item';
-import Errors from 'components/errors/index';
+import Errors from 'components/errors';
+import Loader from 'components/loader';
 
 import type { CatalogItemType } from 'types/catalog/item';
 
@@ -46,7 +46,7 @@ const ItemContainer = (props:Props) => {
     const { item, errors, isFetching, isLoaded } = props;
 
     if (isFetching) {
-        return <ProgressBar />;
+        return <Loader />;
     }
 
     if (errors.length) {
@@ -54,7 +54,7 @@ const ItemContainer = (props:Props) => {
     }
 
     if (!isLoaded) {
-        return <ProgressBar />;
+        return <Loader />;
     }
 
     return <Item item={item} />;

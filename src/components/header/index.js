@@ -7,16 +7,14 @@ import styles from './styles.css';
 
 export default () => {
     return (
-        <header>
-            <nav className="top-nav">
+        <header className={styles.header}>
+            <div className={styles.heading}>
                 <div className="container">
-                    <div className="nav-wrapper">
-                        <Link to={'/'} className="page-title">
-                            Интернет-магазины Новосибирска
-                        </Link>
-                    </div>
+                    <Link to={'/'}>
+                        Интернет-магазины Новосибирска
+                    </Link>
                 </div>
-            </nav>
+            </div>
         </header>
     );
 };

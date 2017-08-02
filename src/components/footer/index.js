@@ -2,13 +2,13 @@
 
 import React from 'react';
 
+import styles from './styles.css';
+
 export default () => {
     return (
-        <footer className="page-footer" style={{ paddingTop: 0 }}>
-            <div className="footer-copyright">
-                <div className="container">
-                    © Все права защищены
-                </div>
+        <footer className={styles.footer}>
+            <div className="container">
+                © Все права защищены
             </div>
         </footer>
     );

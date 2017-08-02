@@ -13,7 +13,7 @@ type Props = {|
 |}
 
 const renderItem = item => (
-    <Link key={item.id} to={`/catalog/item/${item.id}`} className="collection-item">
+    <Link key={item.id} to={`/catalog/item/${item.id}`}>
         <ItemCard key={item.id} item={item} />
     </Link>
 );

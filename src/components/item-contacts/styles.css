@@ -2,7 +2,7 @@
     display: inline-block;
     width: 16px; height: 16px;
     margin-right: 5px;
-    background: transparent url('/i/icons/icons-16.png') no-repeat;
+    background: transparent url('/assets/icons/icons-16.png') no-repeat;
     vertical-align: middle;
 }
 .facebook{ background-position: 0 0;  }

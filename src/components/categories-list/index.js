@@ -1,11 +1,12 @@
 // @flow
 
 import React from 'react';
-import { Collection } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import pure from 'recompose/pure';
 
 import type { StateType as CategoriesType } from 'reducers/catalog/categories/data';
+
+import styles from './styles.css';
 
 type Props = {|
     categories: CategoriesType
@@ -13,17 +14,17 @@ type Props = {|
 
 const CategoriesList = (props:Props) => {
     return (
-        <Collection>
+        <div className={styles.collection}>
             {
                 props.categories.map(category => {
                     return (
-                        <Link key={category.id} to={`/catalog/category/${category.id}`} className="collection-item">
+                        <Link key={category.id} to={`/catalog/category/${category.id}`} className={styles.collectionItem}>
                             {category.title}
                         </Link>
                     );
                 })
             }
-        </Collection>
+        </div>
     );
 };
 

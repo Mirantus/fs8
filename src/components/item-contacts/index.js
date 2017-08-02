@@ -16,7 +16,7 @@ const renderContact = (contact) => {
         ? <a href={contact.url}>{icon} {contact.value}</a>
         : <span>{icon} {contact.value}</span>;
 
-    return <p key={contact.key}>{text}</p>;
+    return <div key={contact.key}>{text}</div>;
 };
 
 export default (props:Props) => {
@@ -50,9 +50,11 @@ export default (props:Props) => {
 
     return (
         <div className="card">
-            <div className="card-content">
-                <span className="card-title">Контакты</span>
-                { contacts.map(contact => renderContact(contact)) }
+            <div className="card-main">
+                <div className="card-title">Контакты</div>
+                <div className="card-content">
+                    { contacts.map(contact => renderContact(contact)) }
+                </div>
             </div>
         </div>
     );
